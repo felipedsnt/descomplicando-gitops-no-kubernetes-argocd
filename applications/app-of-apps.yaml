@@ -10,9 +10,11 @@ spec:
     helm:
       parameters:
       - name: "argocd.giropopsSenhas.enabled"
-        value: "false"
+        value: "true"
+      - name: "argocd.giropopsSenhas.replicas"
+        value: 3
       - name: "argocd.randomLogger.enabled"
-        value: "false"
+        value: "true"
     repoURL: https://github.com/felipedsnt/descomplicando-gitops-no-kubernetes-argocd.git
     targetRevision: feat/day2
   destination:
@@ -23,3 +25,4 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+    - PruneLast=true
