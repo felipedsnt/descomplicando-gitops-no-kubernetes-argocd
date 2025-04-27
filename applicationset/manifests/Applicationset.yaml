@@ -12,11 +12,9 @@ spec:
       revision: feat/day3
       directories:
       - path: applicationset/apps/*/helm
-#      - path: applicationset/apps/random-logger/helm
-#        exclude: true
   template:
     metadata:
-      name: '{{index .path.segments 3}}'
+      name: '{{index .path.segments 2}}'
     spec:
       project: "default"
       source:
@@ -25,7 +23,7 @@ spec:
         path: '{{.path.path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{index .path.segments 3}}'
+        namespace: '{{index .path.segments 2}}'
       syncPolicy:
         automated: {}
         syncOptions:
