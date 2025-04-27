@@ -4,14 +4,20 @@ metadata:
   name: app-of-apps
   namespace: argocd
 spec:
-  destination:
-    namespace: argocd
-    server: https://kubernetes.default.svc
   project: default
   source:
     path: app-of-apps
+    helm:
+      parameters:
+      - name: "argocd.giropopsSenhas.enabled"
+        value: false
+      - name: "argocd.randomLogger.enabled"
+        value: false
     repoURL: https://github.com/felipedsnt/descomplicando-gitops-no-kubernetes-argocd.git
     targetRevision: feat/day2
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
   syncPolicy:
     automated:
       selfHeal: true
