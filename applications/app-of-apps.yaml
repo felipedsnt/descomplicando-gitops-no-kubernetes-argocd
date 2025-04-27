@@ -11,8 +11,6 @@ spec:
       parameters:
       - name: "argocd.giropopsSenhas.enabled"
         value: "true"
-      - name: "argocd.giropopsSenhas.replicas"
-        value: 3
       - name: "argocd.randomLogger.enabled"
         value: "true"
     repoURL: https://github.com/felipedsnt/descomplicando-gitops-no-kubernetes-argocd.git
