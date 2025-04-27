@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana-app
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: 'https://grafana.github.io/helm-charts'
+    chart: grafana
+    helm:
+      valueFiles:
+        - $values/grafana/values.yaml
+  - repoURL: 'https://github.com/felipedsnt/descomplicando-gitops-no-kubernetes-argocd.git'
+    targetRevision: feat/day2
+    ref: values
+  destination:
+    namespace: grafana
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
+   
